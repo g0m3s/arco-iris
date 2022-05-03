@@ -1,4 +1,4 @@
-import { AppBar, Stack, Toolbar } from '@mui/material'
+import { AppBar, Stack, Toolbar, Typography } from '@mui/material'
 import LogoArcoIris from '../../assets/logo.png'
 
 export const Header: React.FC = () => {
@@ -9,8 +9,7 @@ export const Header: React.FC = () => {
         elevation={0}
         sx={{
           zIndex: 200,
-          paddingY: 1,
-          backgroundColor: '#b0d4dc',
+          backgroundColor: '#FFF',
         }}
       >
         <Toolbar
@@ -21,11 +20,15 @@ export const Header: React.FC = () => {
           }}
         >
           <img src={LogoArcoIris} height='100%' alt='logo arco iris' />
+          <Stack direction='row' spacing={3}>
+            <Typography sx={{ cursor: 'pointer' }} className='gradientText'>Carrinho</Typography>
+            <Typography sx={{ cursor: 'pointer' }} className='gradientText'>Minhas compras</Typography>
+          </Stack>
         </Toolbar>
+        <Stack height='10px' bgcolor='#f3e38c' ></Stack>
+        <Stack height='10px' bgcolor='#EC9954' ></Stack>
+        <Stack height='10px' bgcolor='#2596be' ></Stack>
       </AppBar>
-      <Stack height='10px' bgcolor='#f3e38c' ></Stack>
-      <Stack height='10px' bgcolor='#EC9954' ></Stack>
-      <Stack height='10px' bgcolor='#2596be' ></Stack>
     </>
   )
 }

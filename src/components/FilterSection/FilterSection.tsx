@@ -6,7 +6,8 @@ export const FilterSection: React.FC = () => {
     <Stack mb={3} paddingY={1} width='100vw' alignItems='end'>
       <Stack
         spacing={2}
-        padding={1}
+        paddingY={1}
+        paddingX={3}
         color='#FFF'
         direction='row'
         bgcolor= '#EC9954'
