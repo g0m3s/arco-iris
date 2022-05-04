@@ -1,13 +1,21 @@
 import { Stack, Typography } from '@mui/material'
+import { useState } from 'react'
+import { useIsMobile } from '../../hooks/useIsMobile'
+import { Item } from '~/types/item'
 import bolo1 from '../../assets/bolo1.png'
 import bolo2 from '../../assets/bolo2.png'
 import bolo3 from '../../assets/bolo3.png'
 import bolo4 from '../../assets/bolo4.png'
 import bolo5 from '../../assets/bolo5.png'
+import { SeeMore } from './components/SeeMore'
+
 
 export const HomeProducts: React.FC = () => {
+  const isMobile = useIsMobile()
+  const [selectedItem, setSelectedItem] = useState<Item>()
+  const [seeMoreModalIsOpen, setSeeMoreModalIsOpen] = useState<boolean>(false)
 
-  const products = [
+  const products: Item[] = [
     {
       url: bolo1,
       name: 'Chocolate com geleia de morango e amendoim',
@@ -52,18 +60,30 @@ export const HomeProducts: React.FC = () => {
 
   return (
     <Stack width='100vw' alignItems='center' mb={5}>
-      <Stack flexWrap='wrap' width='100vw' direction='row' justifyContent='center'>
+      <Stack
+        width='100vw'
+        flexWrap='wrap'
+        justifyContent='center'
+        direction={isMobile ? 'column' : 'row'}
+        alignItems={isMobile ? 'center' : 'unset'}
+      >
         {products.map((product, index) => (
           <Stack
             sx={{
-              margin: 1,
               padding: 3,
-              width: '19vw',
               borderRadius: 5,
               cursor: 'pointer',
+              margin: isMobile ? 0 : 1,
+              marginBottom: isMobile ? 3 : 0,
+              width: isMobile ? '75vw' : '19vw',
+              minHeight: isMobile ? '60vh' : 'auto',
               boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
             }}
             key={index}
+            onClick={() => {
+              setSelectedItem(product)
+              setSeeMoreModalIsOpen(true)
+            }}
             justifyContent='space-between'
           >
             <Stack alignItems='center'>
@@ -75,7 +95,7 @@ export const HomeProducts: React.FC = () => {
                 src={product.url}
               />
               <Typography
-                marginY={1}
+                marginY={1.5}
                 variant='body2'
                 className='gradientText'
                 sx={{
@@ -93,15 +113,24 @@ export const HomeProducts: React.FC = () => {
               <Typography display='flex' alignItems='center' sx={{ fontSize: '16px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', color: 'rgba(0,0,0,.3)' }}>
                 Categoria: Bolos
               </Typography>
-              <Typography display='flex' alignItems='center' sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',  color: 'rgba(0,0,0,.3)' }}>
-                Preço:
-                <Typography ml={.5} sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)'}} color='rgba(37, 150, 190, .75)'> R$ {product.price.toFixed(2)}</Typography>
+              <Typography display='flex' alignItems='center' sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', color: 'rgba(0,0,0,.3)' }}>
+                Preço (P):
+                <Typography ml={.5} sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }} color='rgba(37, 150, 190, .75)'> R$ {product.price.toFixed(2)}</Typography>
+              </Typography>
+              <Typography display='flex' alignItems='center' sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', color: 'rgba(0,0,0,.3)' }}>
+                Preço (M):
+                <Typography ml={.5} sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }} color='rgba(37, 150, 190, .75)'> R$ {product.price.toFixed(2)}</Typography>
+              </Typography>
+              <Typography display='flex' alignItems='center' sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', color: 'rgba(0,0,0,.3)' }}>
+                Preço (G):
+                <Typography ml={.5} sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }} color='rgba(37, 150, 190, .75)'> R$ {product.price.toFixed(2)}</Typography>
               </Typography>
 
             </Stack>
           </Stack>
         ))}
       </Stack>
+      {selectedItem && <SeeMore isOpen={seeMoreModalIsOpen} item={selectedItem} onClose={()=>setSeeMoreModalIsOpen(false)} />}
     </Stack>
   )
 }

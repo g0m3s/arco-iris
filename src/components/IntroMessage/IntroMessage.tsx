@@ -1,8 +1,12 @@
-import { Stack, Typography } from '@mui/material';
 import Lottie from 'react-lottie'
+import { Stack, Typography } from '@mui/material'
+import { useIsMobile } from '../../hooks/useIsMobile'
 import FoodsAnimation from '../../assets/cake.json'
 
 export const IntroMessage: React.FC = () => {
+
+  const isMobile = useIsMobile()
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -23,9 +27,10 @@ export const IntroMessage: React.FC = () => {
         variant='h2'
         className='animatedText'
         sx={{
-          fontSize: '4rem',
           cursor: 'pointer',
           fontWeight: 'bold',
+          textAlign: 'center',
+          fontSize: isMobile ? '1.6rem' : '4rem',
         }}
       >Confeitaria com amor</Typography>
       <Stack
@@ -34,8 +39,8 @@ export const IntroMessage: React.FC = () => {
         justifyContent='center'
       >
         <Lottie options={defaultOptions}
-          height={150}
-          width={150}
+          height={isMobile ? 100 : 150}
+          width={isMobile ? 100 : 150}
         />
       </Stack>
     </Stack>
