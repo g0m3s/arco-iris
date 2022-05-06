@@ -1,8 +1,9 @@
+
 import { useState } from 'react'
 import { Item } from '~/types/item'
 import ArrowLeft from '../../../../assets/arrowLeft.png'
 import { Drawer, Stack, Typography } from '@mui/material'
-import { BuyArea, NameAndDescription, SizeOptionsArea } from './components'
+import { BuyArea, NameAndDescription, SizeOptionsArea, AdditionalPhotos } from './components'
 
 export interface SeeMoreModalProps {
   item: Item
@@ -29,7 +30,7 @@ export const SeeMore: React.FC<SeeMoreModalProps> = ({ item, isOpen, onClose }) 
 
   const finishOrder = () => {
 
-    const message = `Olá, gostaria de pedir um bolo *${item.name}* no tamanho *${sizeByIndex(selectedProductSize)}* para o dia *${selectedDate || new Date().toISOString().split('T')[0]}*. ${note && `Obs.: *${note}*`} \n \n Endereço: `  
+    const message = `Olá, gostaria de pedir um bolo *${item.name}* no tamanho *${sizeByIndex(selectedProductSize)}* para o dia *${selectedDate || new Date().toISOString().split('T')[0]}*. ${note && `Obs.: *${note}*`} \n \n Endereço: `
 
     window.open(`https://api.whatsapp.com/send?phone=5522999224130&text=${window.encodeURIComponent(message)}`, '_blank')
   }
@@ -52,8 +53,9 @@ export const SeeMore: React.FC<SeeMoreModalProps> = ({ item, isOpen, onClose }) 
       }}
     >
       <Stack>
+
         <Stack position='relative' minHeight='20vh' bgcolor='rgb(248,204,212)'>
-          <Stack onClick={onClose} mt={4} ml={2} width='100vw' sx={{ cursor:'pointer' }}>
+          <Stack onClick={onClose} mt={4} ml={2} width='100vw' sx={{ cursor: 'pointer' }}>
             <img
               width='25px'
               height='25px'
@@ -72,6 +74,7 @@ export const SeeMore: React.FC<SeeMoreModalProps> = ({ item, isOpen, onClose }) 
             />
           </Stack>
         </Stack>
+
         <Stack
           zIndex={10}
           alignItems='center'
@@ -84,6 +87,8 @@ export const SeeMore: React.FC<SeeMoreModalProps> = ({ item, isOpen, onClose }) 
           }}>
           <Stack width='85vw' alignItems='center' justifyContent='space-between' mt='125px'>
             <NameAndDescription name={item.name} description={item.description} />
+
+            {item.additionalPhotos && <AdditionalPhotos photos={item.additionalPhotos} />}
 
             <Stack mt={3} width='100%'>
               <textarea
@@ -118,7 +123,7 @@ export const SeeMore: React.FC<SeeMoreModalProps> = ({ item, isOpen, onClose }) 
                   boxShadow: '0 0 10px rgba(0,0,0,.15)'
                 }}
                 onChange={(e) => setSelectedDate(e.target.value)}
-                value={new Date().toISOString().split('T')[0]}
+                value={ selectedDate || new Date().toISOString().split('T')[0]}
               />
             </Stack>
 
@@ -130,7 +135,8 @@ export const SeeMore: React.FC<SeeMoreModalProps> = ({ item, isOpen, onClose }) 
             </Stack>
           </Stack>
         </Stack>
-      </Stack>
-    </Drawer>
+
+      </Stack >
+    </Drawer >
   )
 }

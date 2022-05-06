@@ -2,6 +2,7 @@ export interface Item {
   url: string,
   name: string
   description: string
+  additionalPhotos?: string[]
   price: [number, number, number]
 }
 
