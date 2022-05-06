@@ -53,7 +53,7 @@ export const SeeMore: React.FC<SeeMoreModalProps> = ({ item, isOpen, onClose }) 
     >
       <Stack>
         <Stack position='relative' minHeight='20vh' bgcolor='rgb(248,204,212)'>
-          <Stack onClick={onClose} mt={4} ml={2} width='100vw'>
+          <Stack onClick={onClose} mt={4} ml={2} width='100vw' sx={{ cursor:'pointer' }}>
             <img
               width='25px'
               height='25px'

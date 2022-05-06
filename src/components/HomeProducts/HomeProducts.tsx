@@ -106,13 +106,13 @@ export const HomeProducts: React.FC = () => {
               >
                 {product.name}
               </Typography>
-              <Typography sx={{ color: 'rgba(0,0,0,.3)', opacity: .5 }}>{product.description}</Typography>
+              <Typography sx={{ color: 'rgba(0,0,0,.3)' }}>{product.description}</Typography>
             </Stack>
 
             <Stack sx={{ fontSize: '18px', fontWeight: 'bold', }} mt={1}>
-              <Typography display='flex' alignItems='center' sx={{ fontSize: '16px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', color: 'rgba(0,0,0,.3)' }}>
+              {/* <Typography display='flex' alignItems='center' sx={{ fontSize: '16px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', color: 'rgba(0,0,0,.3)' }}>
                 Categoria: Bolos
-              </Typography>
+              </Typography> */}
               <Typography display='flex' alignItems='center' sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', color: 'rgba(0,0,0,.3)' }}>
                 Preço (P):
                 <Typography ml={.5} sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }} color='rgba(37, 150, 190, .75)'> R$ {product.price[0].toFixed(2)}</Typography>

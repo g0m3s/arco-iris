@@ -12,6 +12,7 @@ export const SizeOptionsArea: React.FC<SizeOptionsAreaProps> = ({ selectedProduc
     width: '20px',
     height: '20px',
     borderRadius: 5,
+    cursor:'pointer',
     alignItems: 'center',
     justifyContent: 'center',
     boxShadow: '0 0 10px rgba(0,0,0,.15)'

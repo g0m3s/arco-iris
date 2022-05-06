@@ -32,7 +32,7 @@ export const BuyArea: React.FC<BuyAreaProps> = ({ price, finishOrder }) => {
           color='#FFF'
           onClick={finishOrder}
           bgcolor='rgba(255,66,70,.75)'
-          sx={{ borderRadius: '10px' }}
+          sx={{ borderRadius: '10px', cursor:'pointer' }}
         >
           <Typography sx={{
             fontSize: '18px',

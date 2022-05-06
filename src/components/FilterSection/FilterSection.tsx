@@ -1,5 +1,7 @@
-import { Stack, Typography } from '@mui/material'
+import whatsapp from '../../assets/whatsapp.svg'
+import instagram from '../../assets/instagram.svg'
 import { useIsMobile } from '../../hooks/useIsMobile'
+import { Avatar, Link, Stack, Typography } from '@mui/material'
 
 export const FilterSection: React.FC = () => {
 
@@ -13,20 +15,24 @@ export const FilterSection: React.FC = () => {
         paddingX={3}
         color='#FFF'
         direction='row'
-        bgcolor= '#EC9954'
+        bgcolor='#EC9954'
         alignItems='center'
         justifyContent='flex-end'
         sx={{
           borderTopLeftRadius: '10px',
           borderBottomLeftRadius: '10px',
         }}
-        boxShadow= '0px 0px 10px rgba(0, 0, 0, 0.2)'
+        boxShadow='0px 0px 10px rgba(0, 0, 0, 0.2)'
       >
-        <Typography mr={isMobile ? 2 : 5}>{isMobile ? 'Filtro:' : 'Filtrar por:'}</Typography>
+        <Typography mr={isMobile ? 2 : 5}>{isMobile ? 'Entre em contato:' : 'Entre em contato conosco:'}</Typography>
 
-        <Typography sx={{ fontWeight: '700', cursor: 'pointer' }}>Bolos</Typography>
+        <Link href='https://api.whatsapp.com/send?phone=5522999224130' target='_blank'>
+          <Avatar sx={{ height: '25px', width: '25px' }} src={whatsapp} />
+        </Link>
         <Typography>|</Typography>
-        <Typography sx={{ fontWeight: '700', cursor: 'pointer' }}>Itens de confeitaria</Typography>
+        <Link href='https://www.instagram.com/arcoirissdoceria/' target='_blank'>
+          <Avatar sx={{ height: '25px', width: '25px' }} src={instagram} />
+        </Link>
       </Stack>
     </Stack>
   )
