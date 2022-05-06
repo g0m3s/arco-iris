@@ -40,9 +40,6 @@ export const BuyArea: React.FC<BuyAreaProps> = ({ price, finishOrder }) => {
           }}>Comprar</Typography>
         </Stack>
       </Stack>
-      <Stack mt={2} sx={{ fontSize: '20px', fontWeight: 'bold', opacity: .5 }}>
-        Adicionar ao carrinho
-      </Stack>
     </>
   )
 }
