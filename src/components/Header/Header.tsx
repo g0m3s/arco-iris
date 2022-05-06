@@ -8,7 +8,7 @@ export const Header: React.FC = () => {
         position='sticky'
         elevation={0}
         sx={{
-          zIndex: 200,
+          zIndex: 5,
           backgroundColor: '#FFF',
         }}
       >

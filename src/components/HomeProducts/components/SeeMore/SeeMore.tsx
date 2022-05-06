@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { Item } from '~/types/item'
 import ArrowLeft from '../../../../assets/arrowLeft.png'
 import { Drawer, Stack, Typography } from '@mui/material'
+import { BuyArea, NameAndDescription, SizeOptionsArea } from './components'
 
 export interface SeeMoreModalProps {
   item: Item
@@ -10,98 +12,125 @@ export interface SeeMoreModalProps {
 
 export const SeeMore: React.FC<SeeMoreModalProps> = ({ item, isOpen, onClose }) => {
 
+  const [note, setNote] = useState<string>('')
+  const [selectedDate, setSelectedDate] = useState<string>('')
+  const [selectedProductSize, setSelectedProductSize] = useState<number>(0)
+
+  const sizeByIndex = (index: number) => {
+    switch (index) {
+      case 0:
+        return 35
+      case 1:
+        return 40
+      case 2:
+        return 45
+    }
+  }
+
+  const finishOrder = () => {
+
+    const message = `Olá, gostaria de pedir um bolo *${item.name}* no tamanho *${sizeByIndex(selectedProductSize)}* para o dia *${selectedDate || new Date().toISOString().split('T')[0]}*. ${note && `Obs.: *${note}*`} \n \n Endereço: `  
+
+    window.open(`https://api.whatsapp.com/send?phone=5522999224130&text=${window.encodeURIComponent(message)}`, '_blank')
+  }
+
   return (
     <Drawer
-      variant='temporary'
+      variant='persistent'
+      ModalProps={{
+        keepMounted: true,
+      }}
       anchor='bottom'
       open={isOpen}
       PaperProps={{
         sx: {
-          height: '100vh',
-          bgcolor: 'rgb(248,204,212)'
-          // bgcolor: 'rgba(132, 108, 140, .75)'
+          zIndex: 5,
+          overflowX: 'hidden',
+          overflowY: 'scroll',
+          bgcolor: 'rgb(248,204,212)',
         }
       }}
     >
-      <Stack position='relative' height='20vh' bgcolor='rgb(248,204,212)'>
-        <Stack onClick={onClose} mt={4} ml={2} width='100vw'>
-          <img
-            width='25px'
-            height='25px'
-            src={ArrowLeft}
-            alt={item.name}
-            style={{ filter: 'invert(100%)' }}
-          />
+      <Stack>
+        <Stack position='relative' minHeight='20vh' bgcolor='rgb(248,204,212)'>
+          <Stack onClick={onClose} mt={4} ml={2} width='100vw'>
+            <img
+              width='25px'
+              height='25px'
+              src={ArrowLeft}
+              alt={item.name}
+              style={{ filter: 'invert(100%)' }}
+            />
+          </Stack>
+          <Stack zIndex={100} position='absolute' top='100%' left='50%' sx={{ transform: 'translate(-50%, -50%)' }}>
+            <img
+              width='200px'
+              height='200px'
+              src={item.url}
+              alt={item.name}
+              style={{ borderRadius: '50%', boxShadow: '0 0 10px rgba(0,0,0,.3)' }}
+            />
+          </Stack>
         </Stack>
-        <Stack position='absolute' top='100%' left='50%' sx={{ transform: 'translate(-50%, -50%)' }}>
-          <img
-            width='200px'
-            height='200px'
-            src={item.url}
-            alt={item.name}
-            style={{ borderRadius: '50%', boxShadow: '0 0 10px rgba(0,0,0,.3)' }}
-          />
-        </Stack>
-      </Stack>
-      <Stack
-        alignItems='center'
-        sx={{
-          height: '80vh',
-          bgcolor: '#FFF',
-          borderTopLeftRadius: '50px',
-          borderTopRightRadius: '50px',
-        }}>
-        <Stack width='85vw' alignItems='center' mt='125px'>
-          <Typography sx={{
-            fontSize: '20px',
-            fontWeight: 'bold',
-            textAlign: 'center',
-            fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)'
-          }} className='gradientText'>{item.name}</Typography>
-          <Typography mt={2} sx={{ color: 'rgba(0,0,0,.3)', opacity: .8, textIndent: '1.5em' }}>{item.description}</Typography>
+        <Stack
+          zIndex={10}
+          alignItems='center'
+          sx={{
+            bgcolor: '#FFF',
+            paddingBottom: 5,
+            minHeight: '80vh',
+            borderTopLeftRadius: '50px',
+            borderTopRightRadius: '50px',
+          }}>
+          <Stack width='85vw' alignItems='center' justifyContent='space-between' mt='125px'>
+            <NameAndDescription name={item.name} description={item.description} />
 
-          <Stack
-            mt={4}
-            width='90%'
-            padding={2}
-            direction='row'
-            borderRadius={5}
-            alignItems='center'
-            justifyContent='space-between'
-            boxShadow='0 0 10px rgba(0,0,0,.15)'
-            sx={{
-              fontSize: '20px',
-              fontWeight: 'bold',
-            }}
-          >
-            <Typography sx={{
-                fontSize: '18px',
-                fontWeight: 'bold',
-              }}>R$ {item.price.toFixed(2)}</Typography>
-            <Stack
-              padding={1}
-              color='#FFF'
-              bgcolor='rgba(255,66,70,.75)'
-              sx={{ borderRadius: '10px' }}
-            >
-              <Typography sx={{
-                fontSize: '18px',
-                fontWeight: 'bold',
-              }}>Comprar</Typography>
+            <Stack mt={3} width='100%'>
+              <textarea
+                rows={5}
+                id='story'
+                name='story'
+                style={{
+                  padding: 16,
+                  border: 'none',
+                  borderRadius: 16,
+                  backgroundColor: 'rgba(0,0,0,.1)',
+                  boxShadow: '0 0 10px rgba(0,0,0,.15)'
+                }}
+                onChange={(e) => setNote(e.target.value)}
+                placeholder='Adicione aqui informações adicionais (cor, imagem no topo, etc)'
+              />
+            </Stack>
+
+            <SizeOptionsArea selectedProductSize={selectedProductSize} setSelectedProductSize={setSelectedProductSize} />
+
+            <Stack mt={3} width='100%'>
+              <Typography sx={{ color: 'rgba(0,0,0,.5)', opacity: .8 }} mb={1.5} textAlign='left'>Dia da entrega:</Typography>
+              <input
+                type='date'
+                style={{
+                  padding: 16,
+                  width: '85vw',
+                  height: '50px',
+                  border: 'none',
+                  borderRadius: 16,
+                  backgroundColor: 'rgba(0,0,0,.1)',
+                  boxShadow: '0 0 10px rgba(0,0,0,.15)'
+                }}
+                onChange={(e) => setSelectedDate(e.target.value)}
+                value={new Date().toISOString().split('T')[0]}
+              />
+            </Stack>
+
+            <BuyArea finishOrder={finishOrder} price={item.price[selectedProductSize] || 0} />
+            <Stack mt={3}>
+              <Typography sx={{ color: 'rgba(0,0,0,.5)', opacity: .5, fontSize: '13px', textAlign: 'center' }}>
+                * 50% do pagamento deve ser efetuado no momento da compra e 50% no momento da entrega.
+              </Typography>
             </Stack>
           </Stack>
-          {/* <Stack
-            mt={4}
-            className='secondaryButton'
-            sx={{
-              fontSize: '20px',
-              fontWeight: 'bold',
-            }}
-          >
-            Adicionar ao carrinho
-          </Stack> */}
         </Stack>
       </Stack>
-    </Drawer >
+    </Drawer>
   )
 }
