@@ -1,4 +1,5 @@
 export * from './Header'
+export * from './Warnings'
 export * from './IntroMessage'
 export * from './HomeProducts'
 export * from './FilterSection'

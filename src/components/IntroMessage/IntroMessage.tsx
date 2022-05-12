@@ -30,17 +30,17 @@ export const IntroMessage: React.FC = () => {
           cursor: 'pointer',
           fontWeight: 'bold',
           textAlign: 'center',
-          fontSize: isMobile ? '1.6rem' : '4rem',
+          fontSize: isMobile ? '1.3rem' : '4rem',
         }}
-      >Confeitaria com amor</Typography>
+      >Confeitar é só um jeito diferente de amar!</Typography>
       <Stack
         direction='row'
         alignItems='center'
         justifyContent='center'
       >
         <Lottie options={defaultOptions}
-          height={isMobile ? 100 : 150}
-          width={isMobile ? 100 : 150}
+          height={isMobile ? 80 : 150}
+          width={isMobile ? 80 : 150}
         />
       </Stack>
     </Stack>

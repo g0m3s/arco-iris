@@ -1,8 +1,10 @@
 export interface Item {
   url: string,
   name: string
+  hasObs?: boolean
   description: string
   additionalPhotos?: string[]
+  fillingsOptions?: string[] //
   price: [number, number, number]
 }
 

@@ -20,7 +20,7 @@ export const SizeOptionsArea: React.FC<SizeOptionsAreaProps> = ({ selectedProduc
 
   return (
     <Stack mt={3} width='100%'>
-      <Typography sx={{ color: 'rgba(0,0,0,.5)', opacity: .8 }} mb={1.5} textAlign='left'>Quantidade de fatias:</Typography>
+      <Typography sx={{ color: 'rgba(0,0,0,.5)', opacity: .8 }} mb={1.5} textAlign='left'>Tamanho do bolo:</Typography>
       <Stack alignItems='center' width='100%'>
         <Stack alignItems='center' direction='row' justifyContent='space-between' width='95%'>
           <Stack
@@ -29,7 +29,7 @@ export const SizeOptionsArea: React.FC<SizeOptionsAreaProps> = ({ selectedProduc
             color={selectedProductSize === 0 ? '#FFF' : 'rgba(0,0,0,.5)'}
             bgcolor={selectedProductSize === 0 ? 'rgb(248,204,212)' : '#FFF'}
           >
-            <Typography sx={{ fontSize: '16px', fontWeight: 'bold', }}>35</Typography>
+            <Typography sx={{ fontSize: '16px', fontWeight: 'bold', }}>P</Typography>
           </Stack>
           <Stack
             sx={sizeOptionStyles}
@@ -37,7 +37,7 @@ export const SizeOptionsArea: React.FC<SizeOptionsAreaProps> = ({ selectedProduc
             color={selectedProductSize === 1 ? '#FFF' : 'rgba(0,0,0,.5)'}
             bgcolor={selectedProductSize === 1 ? 'rgb(248,204,212)' : '#FFF'}
           >
-            <Typography sx={{ fontSize: '16px', fontWeight: 'bold', }}>40</Typography>
+            <Typography sx={{ fontSize: '16px', fontWeight: 'bold', }}>M</Typography>
           </Stack>
           <Stack
             sx={sizeOptionStyles}
@@ -45,7 +45,7 @@ export const SizeOptionsArea: React.FC<SizeOptionsAreaProps> = ({ selectedProduc
             color={selectedProductSize === 2 ? '#FFF' : 'rgba(0,0,0,.5)'}
             bgcolor={selectedProductSize === 2 ? 'rgb(248,204,212)' : '#FFF'}
           >
-            <Typography sx={{ fontSize: '16px', fontWeight: 'bold', }}>45</Typography>
+            <Typography sx={{ fontSize: '16px', fontWeight: 'bold', }}>G</Typography>
           </Stack>
         </Stack>
       </Stack>

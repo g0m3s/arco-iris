@@ -1,7 +1,7 @@
 import './App.css'
 import React from 'react'
 import { Stack } from '@mui/material'
-import { Header, HomeProducts, IntroMessage, FilterSection } from './components'
+import { Header, HomeProducts, IntroMessage, FilterSection, Warnings } from './components'
 
 export const App: React.FC = () => {
 
@@ -17,6 +17,7 @@ export const App: React.FC = () => {
       <IntroMessage />
       <FilterSection />
       <HomeProducts />
+      <Warnings />
     </Stack>
   )
 }

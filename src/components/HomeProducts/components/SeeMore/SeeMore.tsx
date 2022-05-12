@@ -20,11 +20,11 @@ export const SeeMore: React.FC<SeeMoreModalProps> = ({ item, isOpen, onClose }) 
   const sizeByIndex = (index: number) => {
     switch (index) {
       case 0:
-        return 35
+        return 'P'
       case 1:
-        return 40
+        return 'M'
       case 2:
-        return 45
+        return 'G'
     }
   }
 
@@ -86,7 +86,12 @@ export const SeeMore: React.FC<SeeMoreModalProps> = ({ item, isOpen, onClose }) 
             borderTopRightRadius: '50px',
           }}>
           <Stack width='85vw' alignItems='center' justifyContent='space-between' mt='125px'>
-            <NameAndDescription name={item.name} description={item.description} />
+            <NameAndDescription
+              name={item.name}
+              hasObs={item.hasObs}
+              description={item.description}
+              fillingsOptions={item.fillingsOptions!}
+            />
 
             {item.additionalPhotos && <AdditionalPhotos photos={item.additionalPhotos} />}
 
@@ -123,7 +128,7 @@ export const SeeMore: React.FC<SeeMoreModalProps> = ({ item, isOpen, onClose }) 
                   boxShadow: '0 0 10px rgba(0,0,0,.15)'
                 }}
                 onChange={(e) => setSelectedDate(e.target.value)}
-                value={ selectedDate || new Date().toISOString().split('T')[0]}
+                value={selectedDate || new Date().toISOString().split('T')[0]}
               />
             </Stack>
 

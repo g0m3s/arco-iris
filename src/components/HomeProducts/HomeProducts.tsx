@@ -59,7 +59,7 @@ export const HomeProducts: React.FC = () => {
               >
                 {product.name}
               </Typography>
-              <Typography sx={{ color: 'rgba(0,0,0,.3)' }}>{product.description}</Typography>
+              <Typography sx={{ color: 'rgba(0,0,0,.3)', textIndent: '1.2em', textAlign: 'justify' }}>{product.description}</Typography>
             </Stack>
 
             <Stack sx={{ fontSize: '18px', fontWeight: 'bold', }} mt={1}>
@@ -83,7 +83,7 @@ export const HomeProducts: React.FC = () => {
           </Stack>
         ))}
       </Stack>
-      {selectedItem && <SeeMore isOpen={seeMoreModalIsOpen} item={selectedItem} onClose={()=>setSeeMoreModalIsOpen(false)} />}
+      {selectedItem && <SeeMore isOpen={seeMoreModalIsOpen} item={selectedItem} onClose={() => setSeeMoreModalIsOpen(false)} />}
     </Stack>
   )
 }
