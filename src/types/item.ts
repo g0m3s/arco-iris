@@ -1,5 +1,5 @@
 export interface Item {
-  url: string,
+  url: string
   name: string
   hasObs?: boolean
   description: string

@@ -40,13 +40,20 @@ export const HomeProducts: React.FC = () => {
             justifyContent='space-between'
           >
             <Stack alignItems='center'>
-              <img
-                width='180px'
-                alt='product'
-                height='180px'
-                style={{ borderRadius: '50%' }}
-                src={product.url}
-              />
+              <Stack
+                maxWidth='180px'
+                overflow='hidden'
+                maxHeight='180px'
+                borderRadius='50%'
+                alignItems='center'
+                justifyContent='center'
+              >
+                <img
+                  width='100%'
+                  alt='product'
+                  src={product.url}
+                />
+              </Stack>
               <Typography
                 marginY={1.5}
                 variant='body2'
@@ -62,24 +69,22 @@ export const HomeProducts: React.FC = () => {
               <Typography sx={{ color: 'rgba(0,0,0,.3)', textIndent: '1.2em', textAlign: 'justify' }}>{product.description}</Typography>
             </Stack>
 
-            <Stack sx={{ fontSize: '18px', fontWeight: 'bold', }} mt={1}>
-              {/* <Typography display='flex' alignItems='center' sx={{ fontSize: '16px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', color: 'rgba(0,0,0,.3)' }}>
-                Categoria: Bolos
-              </Typography> */}
-              <Typography display='flex' alignItems='center' sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', color: 'rgba(0,0,0,.3)' }}>
-                Preço (P):
-                <Typography ml={.5} sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }} color='rgba(37, 150, 190, .75)'> R$ {product.price[0].toFixed(2)}</Typography>
-              </Typography>
-              <Typography display='flex' alignItems='center' sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', color: 'rgba(0,0,0,.3)' }}>
-                Preço (M):
-                <Typography ml={.5} sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }} color='rgba(37, 150, 190, .75)'> R$ {product.price[1].toFixed(2)}</Typography>
-              </Typography>
-              <Typography display='flex' alignItems='center' sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', color: 'rgba(0,0,0,.3)' }}>
-                Preço (G):
-                <Typography ml={.5} sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }} color='rgba(37, 150, 190, .75)'> R$ {product.price[2].toFixed(2)}</Typography>
-              </Typography>
-
-            </Stack>
+            {product.price && (
+              <Stack sx={{ fontSize: '18px', fontWeight: 'bold', }} mt={1}>
+                <Typography display='flex' alignItems='center' sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', color: 'rgba(0,0,0,.3)' }}>
+                  Preço (P):
+                  <Typography ml={.5} sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }} color='rgba(37, 150, 190, .75)'> R$ {product.price[0].toFixed(2)}</Typography>
+                </Typography>
+                <Typography display='flex' alignItems='center' sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', color: 'rgba(0,0,0,.3)' }}>
+                  Preço (M):
+                  <Typography ml={.5} sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }} color='rgba(37, 150, 190, .75)'> R$ {product.price[1].toFixed(2)}</Typography>
+                </Typography>
+                <Typography display='flex' alignItems='center' sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)', color: 'rgba(0,0,0,.3)' }}>
+                  Preço (G):
+                  <Typography ml={.5} sx={{ fontSize: '18px', fontWeight: 'bold', fontShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }} color='rgba(37, 150, 190, .75)'> R$ {product.price[2].toFixed(2)}</Typography>
+                </Typography>
+              </Stack>
+            )}
           </Stack>
         ))}
       </Stack>
