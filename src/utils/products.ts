@@ -1,23 +1,22 @@
 import { Item } from '../types/item'
 
-import Especial1 from '../assets/especial/1.jpeg'
-import Especial2 from '../assets/especial/2.jpeg'
-import Especial3 from '../assets/especial/3.jpeg'
-import Especial4 from '../assets/especial/4.jpeg'
-import Especial5 from '../assets/especial/5.jpeg'
+const Tradicional1 = 'https://i.ibb.co/ZW1pfdk/1.jpg'
+const Tradicional2 = 'https://i.ibb.co/7Vkv2T0/2.jpg'
+const Tradicional3 = 'https://i.ibb.co/9GYDS5G/3.jpg'
+const Tradicional4 = 'https://i.ibb.co/qxf0TD8/4.jpg'
+const Tradicional5 = 'https://i.ibb.co/Xtm33vG/5.jpg'
 
-import Tradicional1 from '../assets/tradicional/1.jpeg'
-import Tradicional2 from '../assets/tradicional/2.jpeg'
-import Tradicional3 from '../assets/tradicional/3.jpeg'
-import Tradicional4 from '../assets/tradicional/4.jpeg'
-import Tradicional5 from '../assets/tradicional/5.jpeg'
+const Especial1 = 'https://i.ibb.co/dQ7cc9Y/1.jpg'
+const Especial2 = 'https://i.ibb.co/sp4gCQW/2.jpg'
+const Especial3 = 'https://i.ibb.co/j6SDpd8/3.jpg'
+const Especial4 = 'https://i.ibb.co/RhVWS9L/4.jpg'
+const Especial5 = 'https://i.ibb.co/F5kNcX0/5.jpg'
 
-import MaisQueEspecial1 from '../assets/maisQueEspecial/1.jpeg'
-import MaisQueEspecial2 from '../assets/maisQueEspecial/2.jpeg'
-import MaisQueEspecial3 from '../assets/maisQueEspecial/3.jpeg'
-import MaisQueEspecial4 from '../assets/maisQueEspecial/4.jpeg'
-import MaisQueEspecial5 from '../assets/maisQueEspecial/5.jpeg'
-
+const MaisQueEspecial1 = 'https://i.ibb.co/0XwsTWJ/1.jpg'
+const MaisQueEspecial2 = 'https://i.ibb.co/GJptgLW/2.jpg'
+const MaisQueEspecial3 = 'https://i.ibb.co/7WPdByD/3.jpg'
+const MaisQueEspecial4 = 'https://i.ibb.co/XZr5t19/4.jpg'
+const MaisQueEspecial5 = 'https://i.ibb.co/w63f7js/5.jpg'
 
 export const products: Item[] = [
   {
